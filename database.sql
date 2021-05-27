@@ -72,3 +72,5 @@
 #
 #
 # -- call delete_product(6);
+
+select * from users where (country like '%s%') or (name like '%á%')

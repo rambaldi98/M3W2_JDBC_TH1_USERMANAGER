@@ -10,6 +10,7 @@
 <html>
 <head>
   <title>User Management Application</title>
+  <meta charset="utf-8" />
 </head>
 <body>
 <center>
@@ -19,7 +20,7 @@
   </h2>
 </center>
 <div align="center">
-  <form method="post">
+  <form method="post" accept-charset="x-UTF-16LE-BOM">
     <table border="1" cellpadding="5">
       <caption>
         <h2>Add New User</h2>
