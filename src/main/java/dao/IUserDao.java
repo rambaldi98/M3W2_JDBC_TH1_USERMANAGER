@@ -17,4 +17,5 @@ public interface IUserDao {
     boolean updateUser(User user) throws SQLException;
 
     List<User> selectUsersByName(String name);
+    List<User> selectAllUserSort();
 }

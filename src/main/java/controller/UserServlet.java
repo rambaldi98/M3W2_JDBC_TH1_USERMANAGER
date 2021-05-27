@@ -12,7 +12,7 @@ import java.util.List;
 
 @WebServlet(name = "UserServlet", value = "/users")
 public class UserServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+//    private static final long serialVersionUID = 1L;
     private UserDao userDAO;
 
     public void init() {
@@ -66,6 +66,9 @@ public class UserServlet extends HttpServlet {
                 case "search":
                     showUserByName(request,response);
                     break;
+                case "sortname":
+                    sortByName(request,response);
+                    break;
                 default:
                     listUser(request, response);
                     break;
@@ -73,6 +76,13 @@ public class UserServlet extends HttpServlet {
         } catch (SQLException ex) {
             throw new ServletException(ex);
         }
+    }
+
+    private void sortByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<User> listUser = userDAO.selectAllUserSort();
+        request.setAttribute("listUser", listUser);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void listUser(HttpServletRequest request, HttpServletResponse response)
@@ -150,7 +160,9 @@ public class UserServlet extends HttpServlet {
 
     private void showUserByName(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        String name  = "%"+ request.getParameter("name") +"%";
+
+//        String name  = "%"+ request.getParameter("name") +"%";
+        String name  = new StringBuilder("%").append(request.getParameter("name")).append("%").toString();
         List<User> listUser = userDAO.selectUsersByName(name);
         request.setAttribute("listUser", listUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");

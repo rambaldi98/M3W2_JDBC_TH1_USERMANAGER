@@ -10,6 +10,11 @@
 <html>
 <head>
     <title>User Management Application</title>
+    <style>
+        table{
+        border-collapse : collapse;
+        }
+    </style>
 </head>
 <body>
 <center>
@@ -19,7 +24,7 @@
     </h2>
 
     <form action="/users">
-        <input type="text" name="name" >
+        <input type="text" name="name"  placeholder="ennter name ">
         <input type="submit" name="action" value="search">
     </form>
 
@@ -48,6 +53,8 @@
             </tr>
         </c:forEach>
     </table>
+
+    <a href="/users?action=sortname">sort by name</a>
 </div>
 </body>
 </html>

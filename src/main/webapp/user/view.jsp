@@ -9,6 +9,11 @@
 <html>
 <head>
     <title>View User</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
 <center>
